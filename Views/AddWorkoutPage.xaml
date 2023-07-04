@@ -4,10 +4,7 @@
              x:Class="FitApp.Views.AddWorkoutPage"
              Title="AddWorkoutPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+       
     </VerticalStackLayout>
 </ContentPage>
     

@@ -8,34 +8,51 @@ using System.Xml.Linq;
 
 namespace FitApp.Models
 {
-    class CheatMeal
+    public class CheatMeal
     {
-        int cheatMealId;
-        string name;
-        string description;
-        string caloriesPerHundredG;
-        int consumedAmount;
+        private int mealID;
+        private string name;
+        private string description;
+        private int caloriesPerHundredG;
+        private int consumedAmount;
 
-        public CheatMeal(int cheatMealId, string name, string description, string caloriesPerHundredG)
+        public int MealID
         {
-            this.cheatMealId = cheatMealId;
-            this.name = name;
-            this.description = description;
-            this.caloriesPerHundredG = caloriesPerHundredG;
+            get { return mealID; }
+            set { mealID = value; }
         }
 
-        public CheatMeal(
-            int cheatMealId, 
-            string name,
-            string description, 
-            string caloriesPerHundredG,
-            int consumedAmount)
+        public string Name
         {
-            this.cheatMealId = cheatMealId;
-            this.name = name;
-            this.description = description;
-            this.caloriesPerHundredG = caloriesPerHundredG;
-            this.consumedAmount = consumedAmount;
+            get { return name; }
+            set { name = value; }
+        }
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
+        public int CaloriesPerHundredG
+        {
+            get { return caloriesPerHundredG; }
+            set { caloriesPerHundredG = value; }
+        }
+
+        public int ConsumedAmount
+        {
+            get { return consumedAmount; }
+            set { consumedAmount = value; }
+        }
+
+        public CheatMeal(int mealID, string name, string description, int caloriesPerHundredG, int consumedAmount)
+        {
+            MealID = mealID;
+            Name = name;
+            Description = description;
+            CaloriesPerHundredG = caloriesPerHundredG;
+            ConsumedAmount = consumedAmount;
         }
     }
 }

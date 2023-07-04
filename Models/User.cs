@@ -12,6 +12,8 @@ namespace FitApp.Models
         private string name;
         private int height;
         private int weight;
+        private List<Workout> workouts;
+        private List<CheatMeal> cheatMeals;
 
         public int UserId
         {
@@ -37,12 +39,19 @@ namespace FitApp.Models
             set { weight = value; }
         }
 
+        public List<Workout> Workouts { get => workouts; set => workouts = value; }
+        public List<CheatMeal> CheatMeals { get => cheatMeals; set => cheatMeals = value; }
+
         public User(int userId, string name, int height, int weight)
         {
             UserId = userId;
             Name = name;
             Height = height;
             Weight = weight;
+        }
+
+        public User()
+        {
         }
     }
 }

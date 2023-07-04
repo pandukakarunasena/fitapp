@@ -1,4 +1,6 @@
-﻿namespace FitApp;
+﻿using FitApp.Views;
+
+namespace FitApp;
 
 public partial class MainPage : ContentPage
 {
@@ -11,17 +13,17 @@ public partial class MainPage : ContentPage
 
     private void btnAddWorkout_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("");
+        Shell.Current.GoToAsync(nameof(AddWorkoutPage));
     }
 
     private void btnAddCheatMeal_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("");
+        Shell.Current.GoToAsync(nameof(AddCheatMeal));
     }
 
     private void btnToReport_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("");
+        Shell.Current.GoToAsync(nameof(ReportPage));
     }
 }
 
