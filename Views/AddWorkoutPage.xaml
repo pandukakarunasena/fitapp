@@ -3,8 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FitApp.Views.AddWorkoutPage"
              Title="AddWorkoutPage">
-    <VerticalStackLayout>
-       
-    </VerticalStackLayout>
+
+    <ListView x:Name="WorkoutListView"
+              ItemSelected="OnWorkoutSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Button x:Name="btnSelectWorkout"  Text="{Binding Name}" Clicked="btnSelectWorkout_Clicked"></Button>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
+    
     
