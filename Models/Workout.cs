@@ -23,7 +23,7 @@ namespace FitApp.Models
         private WorkoutType type;
         private string description;
         private int caloriesBurntPer;
-        private int amountCompleted;
+        private string amountCompleted;
 
         public int WorkoutID
         {
@@ -55,13 +55,13 @@ namespace FitApp.Models
             set { caloriesBurntPer = value; }
         }
 
-        public int AmountCompleted
+        public string AmountCompleted
         {
             get { return amountCompleted; }
             set { amountCompleted = value; }
         }
 
-        public Workout(int workoutID, string name, WorkoutType type, string description, int caloriesBurntPer, int amountCompleted)
+        public Workout(int workoutID, string name, WorkoutType type, string description, int caloriesBurntPer, string amountCompleted)
         {
             WorkoutID = workoutID;
             Name = name;

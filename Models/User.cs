@@ -10,10 +10,10 @@ namespace FitApp.Models
     {
         private int userId;
         private string name;
-        private int height;
-        private int weight;
-        private List<Workout> workouts;
-        private List<CheatMeal> cheatMeals;
+        private double height;
+        private double weight;
+        private List<Workout> workouts = new List<Workout>();
+        private List<CheatMeal> cheatMeals = new List<CheatMeal>();
 
         public int UserId
         {
@@ -27,13 +27,13 @@ namespace FitApp.Models
             set { name = value; }
         }
 
-        public int Height
+        public double Height
         {
             get { return height; }
             set { height = value; }
         }
 
-        public int Weight
+        public double Weight
         {
             get { return weight; }
             set { weight = value; }
@@ -42,7 +42,7 @@ namespace FitApp.Models
         public List<Workout> Workouts { get => workouts; set => workouts = value; }
         public List<CheatMeal> CheatMeals { get => cheatMeals; set => cheatMeals = value; }
 
-        public User(int userId, string name, int height, int weight)
+        public User(int userId, string name, double height, double weight)
         {
             UserId = userId;
             Name = name;

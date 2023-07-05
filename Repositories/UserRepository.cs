@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Android.Net.Wifi.Aware;
 
 namespace FitApp.Repositories
 {
@@ -18,7 +17,7 @@ namespace FitApp.Repositories
         {
             if (user == null)
             {
-                user = new User(1, userToAdd.Name, userToAdd.Height, userToAdd.Height);
+                user = new User(1, userToAdd.Name, userToAdd.Height, userToAdd.Weight);
             } 
 
             return user;
