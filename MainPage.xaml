@@ -7,10 +7,6 @@
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-
-        <Button x:Name="btnAddWorkout" Text="Add Workout" Clicked="btnAddWorkout_Clicked"></Button>
-        <Button x:Name="btnAddCheatMeal" Text="Add Cheat Meal" Clicked="btnAddCheatMeal_Clicked"></Button>
-        <Button x:Name="btnToReport" Text="Check Report" Clicked="btnToReport_Clicked"></Button>
     </VerticalStackLayout>
 
 </ContentPage>
