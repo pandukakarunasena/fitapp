@@ -31,13 +31,23 @@ namespace FitApp.Repositories
         {
             user = new User(1, userToUpdate.Name, userToUpdate.Height, userToUpdate.Weight);
         }
-        public static void AddWorkout(Workout workout)
+        public static void AddWorkout(CompletedWorkout workout)
         {
-            user.Workouts.Add(workout);
+            user.CompletedWorkouts.Add(workout);
         }
-        public static void AddCheatMeal(CheatMeal cheatMeal)
+
+        public static void RemoveWorkout(CompletedWorkout workout)
+        {
+            user.CompletedWorkouts.Remove(workout);
+        }
+        public static void AddCheatMeal(ConsumedCheatMeal cheatMeal)
         {
             user.CheatMeals.Add(cheatMeal);
+        }
+
+        public static void RemoveCheatMeeal(ConsumedCheatMeal cheatMeal)
+        {
+            user.CheatMeals.Remove(cheatMeal);
         }
     }
 }
