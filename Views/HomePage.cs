@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitApp.Models
+namespace FitApp.Views
 {
-    class Report
+    internal class HomePage
     {
     }
 }

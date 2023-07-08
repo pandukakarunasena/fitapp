@@ -49,10 +49,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	  <AndroidResource Remove="Views\NewFolder\**" />
+	  <Compile Remove="Views\NewFolder\**" />
+	  <EmbeddedResource Remove="Views\NewFolder\**" />
+	  <MauiCss Remove="Views\NewFolder\**" />
+	  <MauiXaml Remove="Views\NewFolder\**" />
+	  <None Remove="Views\NewFolder\**" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Views\HomePage.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Accord" Version="3.8.0" />
+		<PackageReference Include="Accord.MachineLearning" Version="3.8.0" />
+		<PackageReference Include="Accord.Math" Version="3.8.0" />
+		<PackageReference Include="Accord.Statistics" Version="3.8.0" />
+		<PackageReference Include="MathNet.Numerics" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="22.1.37" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Services\" />
 	  <Folder Include="Views\Controls\" />
 	</ItemGroup>
 
@@ -64,6 +84,15 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\AddWorkoutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Modals\CheatMealDetailsModal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Modals\WorkoutDetailsModalPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PredictionPage.xaml">

@@ -1,12 +1,115 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
              x:Class="FitApp.Views.ReportPage"
-             Title="ReportPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
-</ContentPage>
+             Title="Summary Page">
+    <StackLayout>
+
+        <ListView x:Name="WorkoutListView"
+          BackgroundColor="#F5F5F5"
+          SeparatorColor="#CCCCCC"
+          HasUnevenRows="True"
+          Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10"
+                      Margin="5"
+                      BackgroundColor="#FFFFFF">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Date, StringFormat='{0:MMM dd, yyyy}'}"
+                           FontAttributes="Bold"
+                           FontSize="16"
+                           TextColor="#333333"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           Margin="0, 0, 0, 5" />
+                            <Label Text="Weight:"
+                           FontSize="14"
+                           TextColor="#666666"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="0, 0, 5, 0" />
+                            <Label Text="{Binding Weight, StringFormat='{0} kg'}"
+                           FontSize="14"
+                           TextColor="#333333"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Margin="5, 0, 0, 0" />
+                            <Label Text="Type:"
+                           FontSize="14"
+                           TextColor="#666666"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           Margin="0, 5, 5, 0" />
+                            <Label Text="{Binding Type}"
+                           FontSize="14"
+                           TextColor="#333333"
+                           Grid.Row="2"
+                           Grid.Column="1"
+                           Margin="5, 5, 0, 0" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <chart:SfCartesianChart>
+            <chart:SfCartesianChart.Title>
+                <Label Text="Weight Comparison"/>
+            </chart:SfCartesianChart.Title>
+
+            <chart:SfCartesianChart.Legend>
+                <chart:ChartLegend/>
+            </chart:SfCartesianChart.Legend>
+
+            <chart:SfCartesianChart.XAxes>
+                <chart:DateTimeAxis Interval="1" IntervalType="Days" Minimum="2023-05-10" Maximum="2023-11-01">
+                    <chart:DateTimeAxis.Title>
+                        <chart:ChartAxisTitle Text="Date"/>
+                    </chart:DateTimeAxis.Title>
+                </chart:DateTimeAxis>
+            </chart:SfCartesianChart.XAxes>
+
+            <chart:SfCartesianChart.YAxes>
+                <chart:NumericalAxis Maximum="300" Minimum="20" Interval="5">
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="Weight(in kg)"/>
+                    </chart:NumericalAxis.Title>
+                </chart:NumericalAxis>
+            </chart:SfCartesianChart.YAxes>
+
+            <chart:LineSeries x:Name="LineSeries1" XBindingPath="Date" YBindingPath="Weight" ShowMarkers="True">
+                <chart:LineSeries.MarkerSettings>
+                    <chart:ChartMarkerSettings Type="Diamond"
+                                               Fill="Brown"
+                                               Stroke="Black"
+                                               StrokeWidth="1"
+                                               Height="8"
+                                               Width="8"/>
+                </chart:LineSeries.MarkerSettings>
+            </chart:LineSeries>
+
+            <chart:LineSeries x:Name="LineSeries2" XBindingPath="Date" YBindingPath="Weight" ShowMarkers="True">
+                <chart:LineSeries.MarkerSettings>
+                    <chart:ChartMarkerSettings Type="Circle"
+                                               Fill="Green"
+                                               Stroke="Yellow"
+                                               StrokeWidth="1"
+                                               Height="8"
+                                               Width="8"/>
+                </chart:LineSeries.MarkerSettings>
+            </chart:LineSeries>
+        </chart:SfCartesianChart>
+    </StackLayout></ContentPage>

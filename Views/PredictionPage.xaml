@@ -2,11 +2,53 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FitApp.Views.PredictionPage"
-             Title="PredictionPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Predictions for coming weeks">
+    <StackLayout>
+
+        <ListView x:Name="PredictionsView"
+          BackgroundColor="#F5F5F5"
+          SeparatorColor="#B2BEB5"
+          HasUnevenRows="True"
+          Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10"
+                      Margin="5"
+                      BackgroundColor="#e3526e">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Date, StringFormat='{0:MMM dd, yyyy}'}"
+                           FontAttributes="Bold"
+                           FontSize="16"
+                           TextColor="#333333"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           Margin="0, 0, 0, 5" />
+                            <Label Text="Weight:"
+                           FontSize="14"
+                           TextColor="#666666"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="0, 0, 5, 0" />
+                            <Label Text="{Binding Weight, StringFormat='{0} kg'}"
+                           FontSize="14"
+                           TextColor="#333333"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Margin="5, 0, 0, 0" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitApp.Views.Modals.WorkoutDetailsModalPage"
+             Title="WorkoutDetailsModalPage">
+    <StackLayout Padding="20">
+        <Label Text="Workout Type: " FontSize="18" />
+
+        <Label Text="{Binding Name}" FontSize="18" />
+
+        <Label Text="Measured Weight" FontSize="18" />
+        <Entry x:Name="weightEntry" Placeholder="Enter Your Weight" Keyboard="Numeric" />
+
+        <Label Text="Completed Amount" FontSize="18" />
+        <Entry x:Name="amountEntry" Placeholder="Enter Completed Amount" Keyboard="Numeric" />
+
+        <Button Text="Save" Clicked="OnSaveClicked" HorizontalOptions="Center" Margin="0,20,0,0" />
+    </StackLayout>
+</ContentPage>
