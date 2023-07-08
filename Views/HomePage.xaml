@@ -2,16 +2,68 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FitApp.Views.HomePage"
-             Title="HomePage">
-    <VerticalStackLayout>
-        <Label 
-            x:Name="lblName"
-            Text= "{Binding Name}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="Home">
 
-            <Button x:Name="btnAddWorkout" Text="Add Workout" Clicked="btnAddWorkout_Clicked"></Button>
-            <Button x:Name="btnAddCheatMeal" Text="Add Cheat Meal" Clicked="btnAddCheatMeal_Clicked"></Button>
-            <Button x:Name="btnToReport" Text="Check Report" Clicked="btnToReport_Clicked"></Button>
+    <ContentPage.Resources>
+        <Style x:Key="NameLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+
+        <Style x:Key="AddButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="#3e084c" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+
+        <Style x:Key="ReportButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="BackgroundColor" Value="#86f4ee" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+
+        <Style x:Key="PredictionsButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="BackgroundColor" Value="#025d93" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Spacing="10" Padding="20" BackgroundColor="#c4bcd4">
+        <Label
+        x:Name="lblName"
+        Text="{Binding Name}"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Style="{StaticResource NameLabelStyle}" />
+
+        <Button
+        x:Name="btnAddWorkout"
+        Text="Add Workout"
+        Clicked="btnAddWorkout_Clicked"
+        Style="{StaticResource AddButtonStyle}" />
+        <Button
+        x:Name="btnAddCheatMeal"
+        Text="Add Cheat Meal"
+        Clicked="btnAddCheatMeal_Clicked"
+        Style="{StaticResource AddButtonStyle}" />
+        <Button
+        x:Name="btnToReport"
+        Text="Check Report"
+        Clicked="btnToReport_Clicked"
+        Style="{StaticResource ReportButtonStyle}" />
+        <Button
+        x:Name="btnToPredicates"
+        Text="Get Predictions"
+        Clicked="btnToPredicates_Clicked"
+        Style="{StaticResource PredictionsButtonStyle}" />
     </VerticalStackLayout>
+
 </ContentPage>

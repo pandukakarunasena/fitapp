@@ -5,8 +5,7 @@ namespace FitApp.Views;
 
 public partial class HomePage : ContentPage
 {
-    int count = 0;
-
+   
     public HomePage()
     {
         InitializeComponent();
@@ -27,5 +26,10 @@ public partial class HomePage : ContentPage
     private void btnToReport_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(ReportPage));
+    }
+
+    private void btnToPredicates_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(PredictionPage));
     }
 }
