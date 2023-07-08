@@ -5,21 +5,14 @@
              Title="WorkoutDetailsModalPage">
     <StackLayout Padding="20">
         <Label Text="Workout Type: " FontSize="18" />
+
         <Label Text="{Binding Name}" FontSize="18" />
 
-        <Label Text="Amount Completed" FontSize="18" />
-        <Entry x:Name="amountEntry" Placeholder="Enter amount completed" Keyboard="Numeric" />
+        <Label Text="Measured Weight" FontSize="18" />
+        <Entry x:Name="weightEntry" Placeholder="Enter Your Weight" Keyboard="Numeric" />
 
-        <Label Text="Intensity" FontSize="18" />
-        <Picker x:Name="intensityPicker">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Low</x:String>
-                    <x:String>Moderate</x:String>
-                    <x:String>High</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+        <Label Text="Completed Amount" FontSize="18" />
+        <Entry x:Name="amountEntry" Placeholder="Enter Completed Amount" Keyboard="Numeric" />
 
         <Button Text="Save" Clicked="OnSaveClicked" HorizontalOptions="Center" Margin="0,20,0,0" />
     </StackLayout>
