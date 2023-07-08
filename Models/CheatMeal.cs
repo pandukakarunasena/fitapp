@@ -14,7 +14,6 @@ namespace FitApp.Models
         private string name;
         private string description;
         private int caloriesPerHundredG;
-        private int consumedAmount;
 
         public int MealID
         {
@@ -40,19 +39,12 @@ namespace FitApp.Models
             set { caloriesPerHundredG = value; }
         }
 
-        public int ConsumedAmount
-        {
-            get { return consumedAmount; }
-            set { consumedAmount = value; }
-        }
-
-        public CheatMeal(int mealID, string name, string description, int caloriesPerHundredG, int consumedAmount)
+        public CheatMeal(int mealID, string name, string description, int caloriesPerHundredG)
         {
             MealID = mealID;
             Name = name;
             Description = description;
             CaloriesPerHundredG = caloriesPerHundredG;
-            ConsumedAmount = consumedAmount;
         }
     }
 }

@@ -9,12 +9,12 @@ namespace FitApp.Models
     internal class WorkoutDetail
     {
         public string AmountCompleted { get; set; }
-        public string Intensity { get; set; }
+        public float Weight { get; set; }
 
-        public WorkoutDetail(string amountCompleted, string intensity)
+        public WorkoutDetail(string amountCompleted, float weight)
         {
             this.AmountCompleted = amountCompleted;
-            this.Intensity = intensity;
+            this.Weight = weight;
         }
     }
 }
