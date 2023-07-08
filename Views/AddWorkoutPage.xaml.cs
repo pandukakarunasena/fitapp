@@ -1,66 +1,37 @@
-namespace FitApp.Views;
-
 using FitApp.Models;
 using FitApp.Repositories;
 using FitApp.Views.Modals;
 using System.Collections.ObjectModel;
 
+namespace FitApp.Views;
+
 public partial class AddWorkoutPage : ContentPage
 {
     ObservableCollection<Workout> Workouts;
+    ObservableCollection<CompletedWorkout> CompletedWorkouts;
     Workout selectedWorkout;
     User user;
 	public AddWorkoutPage()
 	{
 		InitializeComponent();
-		Workouts = new ObservableCollection<Workout>(WorkoutRepository.GetAllWorkouts());
+        Workouts = new ObservableCollection<Workout>(WorkoutRepository.GetAllWorkouts());
         WorkoutListView.ItemsSource = Workouts;
+
         user = UserRepository.GetUser();
 
-        
     }
+
     protected override void OnAppearing()
     {
         base.OnAppearing();
-
-        // Subscribe to the message sent from the workout details modal
-        
+        loadContent();
     }
 
-    protected override void OnDisappearing()
+    private void loadContent()
     {
-        base.OnDisappearing();
-
-        // Unsubscribe from the message to avoid memory leaks
-        // if we unsubcribe in here the message wont come.
-        // 
+        CompletedWorkouts = new ObservableCollection<CompletedWorkout>(user.CompletedWorkouts);
+        WorkoutHistoryListView.ItemsSource = CompletedWorkouts;
     }
-
-    private void OnWorkoutDetailReceived(WorkoutDetailsModalPage sender, WorkoutDetail workoutDetail)
-    {
-        // Handle the received workout details (amount completed and intensity)
-        string amountCompleted = workoutDetail.AmountCompleted;
-        string intensity = workoutDetail.Intensity;
-
-        if (amountCompleted != null && intensity != null)
-        {
-            Workout completedWorkout = new Workout(
-                selectedWorkout.WorkoutID,
-                selectedWorkout.Name,
-                selectedWorkout.Type,
-                selectedWorkout.Description,
-                selectedWorkout.CaloriesBurntPer,
-                amountCompleted
-            );
-
-            user.Workouts.Add(completedWorkout);
-        }
-
-        MessagingCenter.Unsubscribe<WorkoutDetailsModalPage, WorkoutDetail>(this, "WorkoutDetail");
-        // Use the workout details as needed
-        // For example, update the selected workout with the captured data
-    }
-
     private void OnWorkoutSelected(object sender, SelectedItemChangedEventArgs e)
     {
         // Deselect the item
@@ -73,13 +44,38 @@ public partial class AddWorkoutPage : ContentPage
         var workout = button.BindingContext as Workout;
         if (workout != null)
         {
-            MessagingCenter.Subscribe<WorkoutDetailsModalPage, WorkoutDetail>(this, "WorkoutDetail", OnWorkoutDetailReceived);
             selectedWorkout = workout;
+            MessagingCenter.Subscribe<WorkoutDetailsModalPage, WorkoutDetail>(this, "WorkoutDetail", OnWorkoutDetailReceived);
             var workoutDetailsModalPage = new WorkoutDetailsModalPage();
             // Set the current page as the binding context to access its properties
-            // workoutDetailsModalPage.BindingContext = this; 
-            
+            workoutDetailsModalPage.BindingContext = this; 
+
             await Application.Current.MainPage.Navigation.PushModalAsync(workoutDetailsModalPage);
         }
+    }
+
+    private void OnWorkoutDetailReceived(WorkoutDetailsModalPage sender, WorkoutDetail workoutDetail)
+    {
+        // Handle the received workout details (amount completed and intensity)
+        float weightAfterWorkout = workoutDetail.Weight;
+        string completedAmount = workoutDetail.AmountCompleted;
+
+        if (completedAmount != null)
+        {
+            CompletedWorkout completedWorkout = new CompletedWorkout (
+                selectedWorkout.WorkoutID,
+                DateTime.Now,
+                selectedWorkout.Name,
+                selectedWorkout.Type,
+                selectedWorkout.Description,
+                weightAfterWorkout,
+                completedAmount
+            );
+
+            user.CompletedWorkouts.Add(completedWorkout);
+            user.Weight = weightAfterWorkout;
+        }
+
+        MessagingCenter.Unsubscribe<WorkoutDetailsModalPage, WorkoutDetail>(this, "WorkoutDetail");
     }
 }
