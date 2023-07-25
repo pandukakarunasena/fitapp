@@ -4,7 +4,7 @@ namespace FitApp.Repositories
 {
     internal class WorkoutRepository
     {
-        private static List<Workout> workouts = new List<Workout>() {,
+        private static List<Workout> workouts = new List<Workout>() {
             new Workout(1, "Jogging", Workout.WorkoutType.Running, "Simple Jogging"),
             new Workout(2, "Marathon", Workout.WorkoutType.Running, "Simple Marathon"),
             new Workout(3, "Cycling", Workout.WorkoutType.Cycling, "Simple Cycling"),

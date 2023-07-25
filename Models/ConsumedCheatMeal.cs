@@ -13,7 +13,7 @@ namespace FitApp.Models
 
         public double CurrentWeightOfUser { get; set; }
 
-        public ConsumedCheatMeal(int mealID, DateTime date, string name, 
+        public ConsumedCheatMeal(string mealID, DateTime date, string name, 
             string description, int caloriesPerHundredG, int consumedAmount, double currentWeightOfUser) :
             base(mealID, name, description, caloriesPerHundredG)
         {

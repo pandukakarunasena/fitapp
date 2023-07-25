@@ -5,7 +5,7 @@
              x:Class="FitApp.Views.ReportPage"
              Title="Summary Page">
     <StackLayout>
-
+        
         <ListView x:Name="WorkoutListView"
           BackgroundColor="#F5F5F5"
           SeparatorColor="#CCCCCC"

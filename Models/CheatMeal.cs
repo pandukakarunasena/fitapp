@@ -10,12 +10,12 @@ namespace FitApp.Models
 {
     public class CheatMeal
     {
-        private int mealID;
+        private string mealID;
         private string name;
         private string description;
         private int caloriesPerHundredG;
 
-        public int MealID
+        public string MealID
         {
             get { return mealID; }
             set { mealID = value; }
@@ -39,7 +39,7 @@ namespace FitApp.Models
             set { caloriesPerHundredG = value; }
         }
 
-        public CheatMeal(int mealID, string name, string description, int caloriesPerHundredG)
+        public CheatMeal(string mealID, string name, string description, int caloriesPerHundredG)
         {
             MealID = mealID;
             Name = name;

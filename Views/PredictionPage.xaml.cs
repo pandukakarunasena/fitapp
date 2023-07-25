@@ -14,7 +14,8 @@ public partial class PredictionPage : ContentPage
     List<DataPoint> PredictionsList = new List<DataPoint>();
     User user;
 
-    public PredictionPage() {
+    public PredictionPage()
+    {
         InitializeComponent();
 
         user = UserRepository.GetUser();
@@ -25,11 +26,16 @@ public partial class PredictionPage : ContentPage
             existingData = new DataGenerator().getCompleteOrderedDataPointList(
             user.CompletedWorkouts, user.CheatMeals);
         }
-        
 
-        var dataGenetors = new DataGenerator();
 
-        //test data to generate the prediction.
-        //var existingData = new List<DataPoint>{
-        //    new DataPoint(new DateTime(2023, 08, 10), 80, "W"),
-        //    new DataPoint(new DateTime(2023, 09, 15), 79.5, "W"),
+        var dataGenerator = new DataGenerator();
+        List<DataPointPrediction> predictedData = new List<DataPointPrediction>();
+
+        if (existingData.Count > 10)
+        {
+            predictedData = dataGenerator.PredictNextDataPoints(existingData, 5, 1);
+        }
+
+        PredictionsView.ItemsSource = predictedData;
+    }
+}

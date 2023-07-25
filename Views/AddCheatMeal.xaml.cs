@@ -2,6 +2,7 @@ using FitApp.Repositories;
 using FitApp.Models;
 using System.Collections.ObjectModel;
 using FitApp.Views.Modals;
+using System.Xml.Linq;
 
 namespace FitApp.Views;
 
@@ -61,7 +62,7 @@ public partial class AddCheatMeal : ContentPage
         if (consumedAmount != null )
         {
             ConsumedCheatMeal consumedCheatMeal = new ConsumedCheatMeal(
-                selectedCheatMeal.MealID,
+                GenerateRandomId(),
                 DateTime.Now,
                 selectedCheatMeal.Name,
                 selectedCheatMeal.Description,
@@ -74,7 +75,52 @@ public partial class AddCheatMeal : ContentPage
         }
 
         MessagingCenter.Unsubscribe<CheatMealDetailsModal, string>(this, "CheatMealDetail");
-        // Use the cheat meal details as needed
-        // For example, update the selected cheat meal with the captured data
+
     }
+
+    private void btnUpdate_Clicked(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        var cheatMeal = button.BindingContext as CheatMeal;
+        if (cheatMeal != null)
+        {
+            var selectedItem = CheatMealHistoryListView.SelectedItem;
+
+            if (selectedItem is ConsumedCheatMeal consumedCheatMeal)
+            {
+                UserRepository.UpdateCheatMeal(consumedCheatMeal);
+            }
+
+
+            DisplayAlert("Update", "Entry updated successfully.", "OK");
+        }
+           
+    }
+
+    private async void btnDelete_Clicked(object sender, EventArgs e)
+    {
+        bool answer = await DisplayAlert("Delete", "Are you sure you want to delete the consumed cheat meal?", "Yes", "No");
+
+        if (answer)
+        {
+            var button = (Button)sender;
+            var consumedCheatMeal = button.BindingContext as ConsumedCheatMeal;
+            if (consumedCheatMeal != null)
+            {
+
+                UserRepository.RemoveCheatMeal(consumedCheatMeal);
+                await DisplayAlert("Delete", "Consumed cheat meal deleted successfully.", "OK");
+            }
+
+            CheatMealHistoryListView.ItemsSource = user.CheatMeals;
+        } 
+    }
+
+    private string GenerateRandomId()
+    {
+        Guid guid = Guid.NewGuid();
+        string randomId = guid.ToString();
+        return randomId;
+    }
+
 }

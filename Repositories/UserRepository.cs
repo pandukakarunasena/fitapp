@@ -45,9 +45,41 @@ namespace FitApp.Repositories
             user.CheatMeals.Add(cheatMeal);
         }
 
-        public static void RemoveCheatMeeal(ConsumedCheatMeal cheatMeal)
+        public static void RemoveCheatMeal(ConsumedCheatMeal cheatMeal)
         {
-            user.CheatMeals.Remove(cheatMeal);
+            ConsumedCheatMeal cheatMealToDelete = user.CheatMeals.FirstOrDefault(c => c.MealID == cheatMeal.MealID);
+            if (cheatMealToDelete != null)
+            {
+                user.CheatMeals.Remove(cheatMealToDelete);
+            } 
         }
+
+        public static void UpdateCheatMeal(ConsumedCheatMeal updatedCheatMeal)
+        {
+            ConsumedCheatMeal cheatMealToUpdate = user.CheatMeals.FirstOrDefault(c => c.MealID == updatedCheatMeal.MealID);
+            if (cheatMealToUpdate != null)
+            {
+                cheatMealToUpdate.Name = updatedCheatMeal.Name;
+                cheatMealToUpdate.Description = updatedCheatMeal.Description;
+                cheatMealToUpdate.CaloriesPerHundredG = updatedCheatMeal.CaloriesPerHundredG;
+                cheatMealToUpdate.ConsumedAmount = updatedCheatMeal.ConsumedAmount;
+                cheatMealToUpdate.CurrentWeightOfUser = updatedCheatMeal.CurrentWeightOfUser;
+            }
+        }
+
+        public static void UpdateWorkout(CompletedWorkout updatedWorkout)
+        {
+            CompletedWorkout workoutToUpdate = user.CompletedWorkouts.FirstOrDefault(w => w.WorkoutID == updatedWorkout.WorkoutID);
+            if (workoutToUpdate != null)
+            {
+                workoutToUpdate.Name = updatedWorkout.Name;
+                workoutToUpdate.Type = updatedWorkout.Type;
+                workoutToUpdate.Description = updatedWorkout.Description;
+                workoutToUpdate.WeightAfterWorkout = updatedWorkout.WeightAfterWorkout;
+                workoutToUpdate.CompletedAmount = updatedWorkout.CompletedAmount;
+            }
+        }
+
+      
     }
 }

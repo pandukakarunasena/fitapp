@@ -15,7 +15,7 @@
                     <ViewCell>
                         <Grid Padding="10"
                       Margin="5"
-                      BackgroundColor="#e3526e">
+                      BackgroundColor="#9BA49E">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -52,3 +52,4 @@
         </ListView>
     </StackLayout>
 </ContentPage>
+    
